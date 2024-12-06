@@ -8,6 +8,8 @@ Use to replace `\Drupal\loft_core\Utility\Cypress`, by providing a Cypress-compa
 
 1. You must enable [DOM Testing Selectors Drupal Module](https://github.com/aklump/drupal_dom_testing_selectors)
 2. You must have a custom Drupal module (`my_module`) for the following instructions.
+1. Install this in your custom module as described by _Install with Composer_.
+1. In the root _composer.json_ of your Drupal app, add the `repository` portion from _Install with Composer_ as well.
 
 ## Install with Composer
 
