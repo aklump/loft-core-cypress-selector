@@ -1,0 +1,9 @@
+title: Book
+uuid: 6a2c3b24-2ebd-45c9-9508-f6e96125db67
+chapters:
+  -
+    id: general
+    title: General
+    pages:
+      - changelog
+      - readme

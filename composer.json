@@ -1,0 +1,20 @@
+{
+    "name": "aklump/loft-core-cypress-selector",
+    "description": "{{ description }}",
+    "homepage": "https://github.com/aklump/loft-core-cypress-selector",
+    "authors": [
+        {
+            "name": "Aaron Klump",
+            "homepage": "https://www.intheloftstudios.com",
+            "role": "Senior Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "AKlump\\DomTestingSelectors\\Selector\\": "src/"
+        }
+    },
+    "require": {
+        "aklump/bem": "^0.0"
+    }
+}
