@@ -5,6 +5,8 @@ tags: ''
 
 # Loft Core Cypress Selector
 
+![Goodbye Cypress](../../images/hero.jpg)
+
 Use to replace `\Drupal\loft_core\Utility\Cypress`, by providing a Cypress-compatible selector, to the [DOM Testing Selectors Drupal Module](https://github.com/aklump/drupal_dom_testing_selectors).
 
 ## Install
