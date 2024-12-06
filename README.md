@@ -24,7 +24,7 @@ Use to replace `\Drupal\loft_core\Utility\Cypress`, by providing a Cypress-compa
 1. Require this package:
    
     ```
-    composer require aklump/loft-core-cypress-selector:@dev
+    composer require aklump/loft-core-cypress-selector:^0.0
     ```
 
 ## Configuration
