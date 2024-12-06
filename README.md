@@ -27,31 +27,32 @@ Use to replace `\Drupal\loft_core\Utility\Cypress`, by providing a Cypress-compa
 
 ## Configuration
 
-1. Create `\Drupal\my_module\MyModuleServiceProvider` class.
+1. Create `\Drupal\my_module\MyModuleServiceProvider` class. This will replace the default selector with the custom selector provided by this package, which will output the same markup as the Cypress class.
 
-```php
-namespace Drupal\my_module;
+    ```php
+    namespace Drupal\my_module;
 
-final class AtsCoreServiceProvider implements \Drupal\Core\DependencyInjection\ServiceModifierInterface {
+    final class AtsCoreServiceProvider implements \Drupal\Core\DependencyInjection\ServiceModifierInterface {
 
-  /**
-   * @inheritDoc
-   */
-  public function alter(\Drupal\Core\DependencyInjection\ContainerBuilder $container) {
-    // Switch to the Cypress-style selector.
-    if ($container->hasDefinition('dom_testing_selectors.selector')) {
-      $definition = $container->getDefinition('dom_testing_selectors.selector');
-      $definition->setClass(\AKlump\DomTestingSelectors\Selector\LoftCoreCypressSelector::class);
+      /**
+       * @inheritDoc
+       */
+      public function alter(\Drupal\Core\DependencyInjection\ContainerBuilder $container) {
+        // Switch to the Cypress-style selector.
+        if ($container->hasDefinition('dom_testing_selectors.selector')) {
+          $definition = $container->getDefinition('dom_testing_selectors.selector');
+          $definition->setClass(\AKlump\DomTestingSelectors\Selector\LoftCoreCypressSelector::class);
+        }
+      }
     }
-  }
-}
-```
+    ```
+2. Now migrate your code, replacing `Cypress` with `TestingSelector` as described next.
 
 ## Code Migration
 
 1. During the migration period, you are advised to comment out the line `$this->addHandler(new PassThroughHandler());` in `\Drupal\dom_testing_selectors\Factory\DrupalFactory`. This should help to prevent errors, by throwing exceptions.
-3. In some cases you may be less specific in the element you pass, for example `$element['link']['attributes']` (as passed to `Cypress::tag()`) can be passed as `$element['link']` to `TestingSelectors::apply()`.
-2. Go through your codebase and make the following types of changes.
+3. Because of differences between these two libraries, in some cases you can be less specific in the element you pass. For example `$element['link']['attributes']` (as passed to `Cypress::tag()`) should be passed as `$element['link']` to `TestingSelectors::apply()`.
+2. Go through your entire codebase replacing all instances of `\Drupal\loft_core\Utility\Cypress` as illustrated.
 
 ### Legacy Code
 
