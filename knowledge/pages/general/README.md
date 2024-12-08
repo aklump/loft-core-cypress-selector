@@ -9,23 +9,22 @@ tags: ''
 
 Use to replace `\Drupal\loft_core\Utility\Cypress`, by providing a Cypress-compatible selector, to the [DOM Testing Selectors Drupal Module](https://github.com/aklump/drupal_dom_testing_selectors).
 
-## Install
+## Requirements
 
 1. You must enable [DOM Testing Selectors Drupal Module](https://github.com/aklump/drupal_dom_testing_selectors)
 2. You must have a custom Drupal module (`my_module`) for the following instructions.
 1. Install this in your custom module as described by _Install with Composer_.
-1. In the root _composer.json_ of your Drupal app, add the `repository` portion from _Install with Composer_ as well.
 
 {{ composer.install|raw }}
 
 ## Configuration
 
-1. Create `\Drupal\my_module\MyModuleServiceProvider` class. This will replace the default selector with the custom selector provided by this package, which will output the same markup as the Cypress class.
+1. Create `\Drupal\my_module\MyModuleServiceProvider` class.  Replace `MyModule` with the actual name. This class will replace the default selector with the custom selector provided by this package, which will output the same markup as the Cypress class you've been using.
 
     ```php
     namespace Drupal\my_module;
 
-    final class AtsCoreServiceProvider implements \Drupal\Core\DependencyInjection\ServiceModifierInterface {
+    final class MyModuleServiceProvider implements \Drupal\Core\DependencyInjection\ServiceModifierInterface {
 
       /**
        * @inheritDoc
