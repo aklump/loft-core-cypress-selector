@@ -71,7 +71,7 @@ final class LoftCoreCypressSelector implements ElementSelectorInterface {
   /**
    * {@inheritdoc}
    */
-  public function getAttributeValue(string $current_value = ''): string {
+  public function getAttributeValue(string $current_value): string {
     $name = $this->getName();
     if (empty($name)) {
       throw new UnnamedSelectorException();

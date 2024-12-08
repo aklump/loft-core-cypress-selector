@@ -1,20 +1,29 @@
 {
-    "name": "aklump/loft-core-cypress-selector",
-    "description": "{{ description }}",
-    "homepage": "https://github.com/aklump/loft-core-cypress-selector",
-    "authors": [
-        {
-            "name": "Aaron Klump",
-            "homepage": "https://www.intheloftstudios.com",
-            "role": "Senior Developer"
-        }
-    ],
-    "autoload": {
-        "psr-4": {
-            "AKlump\\DomTestingSelectors\\Selector\\": "src/"
-        }
-    },
-    "require": {
-        "aklump/bem": "^0.0"
+  "name": "aklump/loft-core-cypress-selector",
+  "description": "{{ description }}",
+  "homepage": "https://github.com/aklump/loft-core-cypress-selector",
+  "authors": [
+    {
+      "name": "Aaron Klump",
+      "homepage": "https://www.intheloftstudios.com",
+      "role": "Senior Developer"
     }
+  ],
+  "autoload": {
+    "psr-4": {
+      "AKlump\\DomTestingSelectors\\Selector\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "AKlump\\DomTestingSelectors\\Tests\\Unit\\": "./tests_unit"
+    }
+  },
+  "require": {
+    "aklump/bem": "^0.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.6",
+    "aklump/dom-testing-selectors": "^0.0"
+  }
 }
