@@ -4,39 +4,56 @@
 
 Use to replace `\Drupal\loft_core\Utility\Cypress`, by providing a Cypress-compatible selector, to the [DOM Testing Selectors Drupal Module](https://github.com/aklump/drupal_dom_testing_selectors).
 
-## Install
+## Requirements
 
 1. You must enable [DOM Testing Selectors Drupal Module](https://github.com/aklump/drupal_dom_testing_selectors)
 2. You must have a custom Drupal module (`my_module`) for the following instructions.
 1. Install this in your custom module as described by _Install with Composer_.
-1. In the root _composer.json_ of your Drupal app, add the `repository` portion from _Install with Composer_ as well.
 
 ## Install with Composer
 
-1. Because this is an unpublished package, you must define it's repository in
-   your project's _composer.json_ file. Add the following to _composer.json_ in
-   the `repositories` array:
-   
+Because this is an unpublished, custom Drupal extension, the way you install and depend on it is a little different than published, contributed extensions.
+
+* Add the following to the **root-level** _composer.json_ in the `repositories` array:
     ```json
     {
      "type": "github",
      "url": "https://github.com/aklump/loft-core-cypress-selector"
     }
     ```
-1. Require this package:
-   
+* Proceed to either A or B, but not both.
+---
+### A. Install Standalone
+
+* Require _aklump/loft-core-cypress-selector_ at the **root-level**.
     ```
     composer require aklump/loft-core-cypress-selector:^0.0
     ```
+---
+### B. Depend on This Package
+(_Replace `my_module` with your module's real name._)
+
+* Add the following to _my_module/composer.json_ in the `repositories` array. (_Yes, this is done both here and at the root-level._)
+    ```json
+    {
+     "type": "github",
+     "url": "https://github.com/aklump/loft-core-cypress-selector"
+    }
+    ```
+* From the depending module directory run:
+    ```
+    composer require aklump/loft-core-cypress-selector:^0.0 --no-update
+    ```
+* Back at the **root-level** run `composer update my_module`
 
 ## Configuration
 
-1. Create `\Drupal\my_module\MyModuleServiceProvider` class. This will replace the default selector with the custom selector provided by this package, which will output the same markup as the Cypress class.
+1. Create `\Drupal\my_module\MyModuleServiceProvider` class.  Replace `MyModule` with the actual name. This class will replace the default selector with the custom selector provided by this package, which will output the same markup as the Cypress class you've been using.
 
     ```php
     namespace Drupal\my_module;
 
-    final class AtsCoreServiceProvider implements \Drupal\Core\DependencyInjection\ServiceModifierInterface {
+    final class MyModuleServiceProvider implements \Drupal\Core\DependencyInjection\ServiceModifierInterface {
 
       /**
        * @inheritDoc
